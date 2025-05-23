@@ -3,10 +3,10 @@
 just a reference implementation for a modular virtual controller, suitable for use in a 2D / 3D fighting game engine with command sequences. 
 
 Shows examples for:
-    * Evaluating user-defined command sequences (e.g. quarter circle forward) with a tiny DSL and some json
-    * storing inputs in a circular buffer + accessing it like any normal container
-    * Saving / loading virtual controller & input buffer state
-    * using bitfields & masks to handle inputs
+    - Evaluating user-defined command sequences (e.g. quarter circle forward) with a tiny DSL and some json
+    - storing inputs in a circular buffer + accessing it like any normal container
+    - Saving / loading virtual controller & input buffer state
+    - using bitfields & masks to handle inputs
 
 ---
 ## 🔧 Components Overview
