@@ -1,37 +1,40 @@
-#ifndef _CommandCompiler_h
-#define _CommandCompiler_h
-
+#pragma once
 #include <string>
 #include <vector>
-#include "input/CommandScanner.h"
-#include "input/VirtualController.h"
-#include <functional>
+#include "CommandScanner.h"
+#include "CommandVm.h"
 
-typedef std::function<bool(int, bool)> CommandFunction;
-struct CommandNode {
-  CommandFunction function;
-  int bufferLength;
+struct CommandStringObj {
+  std::string command;
+  bool clears;
 };
-typedef std::vector<CommandNode> Command;
+
+struct CommandJson {
+  std::string command;
+  std::string name;
+  bool clears;
+  int num;
+};
+
+struct RootJson {
+  std::vector<CommandJson> commands;
+};
 
 class CommandCompiler {
 public:
-
   CommandCompiler();
   ~CommandCompiler();
 
-  void init();
-  void compile(const char* inputString);
+  void init(const char* path);
+  const CommandCode* getCommand(int index) const;
+  std::string opcodeToString(CommandOp opcode);
 
-  CommandNode compileNode();
-  CommandFunction binaryCommand(CommandFunction currentFunc, CommandTokenType type);
-
-  static std::vector<std::string> commandStrings;
-  std::vector<Command> commands;
-  VirtualController* controllerPointer;
 private:
+  void compile(const char* inputString, bool clears);
+  CommandCode compileNode();
+  void printCode(const CommandCode& code);
+
+  std::vector<CommandCode> commands;
   CommandScanner commandScanner;
   CommandToken* currentToken;
 };
-
-#endif /* _CommandCompiler_h */
