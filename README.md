@@ -40,13 +40,6 @@ Shows examples for:
 // funcMods = ~, *, @
 // unary = !
 // binary = &, |
-// TODO: unary and binary
-//  "MP & *F",
-//  "MP & *B",
-//  "@F & !D, N, F"
-//  "@B & !D, N, B",
-//  "~D, DF, @F & !D, LK | ~LK",
-//  "~D, DB, @B & !D, LP | ~LP",
 ```
 
 ---
